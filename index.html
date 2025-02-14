@@ -206,7 +206,7 @@ songSelect.addEventListener('change', () => {
   const selectedSong = songSelect.value;
   audio.src = selectedSong;
   audio.play()
-    .then(() => musicButton.innerHTML = '🎵 Дуу зогсоох')
+    .then(() => musicButton.innerHTML = '▐▐')
     .catch(error => console.error('Дуу эхлүүлэхэд алдаа:', error));
 });
 
