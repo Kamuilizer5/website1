@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>biydaalt</title>
+  <style>
+    body {
+      font-family: 'Dancing Script', cursive;
+      margin: 0;
+      overflow-x: hidden;
+      color: #ff0066;
+      background: url('lnn.jpeg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .video-background {
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      opacity: 0.4;
+      filter: sepia(1) hue-rotate(300deg);
+    }
+
+    #music-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+      animation: pulse 2s infinite;
+      background: #ff0066;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 25px;
+      font-size: 20px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    #song-select {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 999;
+      padding: 10px;
+      font-size: 16px;
+      background: #ff0066;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.8);
+      margin: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 30px rgba(255, 0, 102, 0.3);
+    }
+
+    .flower {
+      position: absolute;
+      font-size: 30px;
+      animation: fall 8s linear infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-10vh) rotate(0deg); }
+      100% { transform: translateY(110vh) rotate(360deg); }
+    }
+
+    .glow {
+      text-shadow: 0 0 20px #ff0066;
+      animation: glow 2s ease-in-out infinite;
+    }
+
+    @keyframes glow {
+      50% { text-shadow: 0 0 30px #ff0066, 0 0 10px white; }
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 230, 230, 0.95);
+      padding: 30px;
+      border-radius: 20px;
+      border: 3px solid #ff0066;
+      box-shadow: 0 0 50px rgba(255,0,102,0.5);
+    }
+
+    .love-btn {
+      background: #ff0066;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 25px;
+      font-size: 20px;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin: 20px;
+    }
+
+    .love-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px #ff0066;
+    }
+
+    .love-text {
+      position: absolute;
+      color: #ff0066;
+      font-weight: bold;
+      z-index: 1;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 30px;
+      animation: fall 5s linear infinite;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <audio id="background-music" loop preload="auto">
+    <source src="perfect.mp3" type="audio/mpeg">
+  </audio>
+
+  <select id="song-select">
+    <option value="perfect.mp3">Perfect</option>
+    <option value="allofme.mp3">All of Me</option>
+    <option value="1000years.mp3">A Thousand Years</option>
+    <option value="dieforyou.mp3">Die For You</option>
+  </select>
+
+  <button id="music-button" class="love-btn">🎵</button>
+
+  <div id="flower-container"></div>
+  <div id="love-text-container"></div> 
+
+  <div class="content">
+    <h1 class="glow">💘 Гэгээн хайрын өдрийн мэнд 💘</h1>
+    
+    <img src="enhjin.png" alt="Хайр" style="width:300px; border-radius:50%; animation: rotate 10s linear infinite;">
+
+    <p style="font-size:24px; line-height:1.6;">
+      <span style="color:#ff0066;">❤️</span> Чи бол миний нарны систем <br>
+      <span style="color:#ff0066;">✨</span> Миний сансрын одод <br>
+      <span style="color:#ff0066;">🌹</span> Хамгаас илүү хайртай шүү<br>
+    </p>
+
+    <button class="love-btn" onclick="showMagic()">💮</button>
+
+    <div id="secret-msg" class="modal">
+      <h2>💌Захиа💌</h2>
+      <p>Миний хамгийн аз жаргалтай зүүд бол өглөө сэрээд толинд өөрийгөө харахад<br>
+      ардаас минь чанга тэврээд, хацар дээр зөөлөн үнсчихээд, хамтдаа өглөөний цай<br>
+      бэлдэж, хүлээн сууж байхдаа, чи ээжтэйгээ танилцуулна гэж хэлэхэд би баярлаад<br>
+      сэрчихсэн. Өглөө сэрчихэээд хичнээн зүүд гэдгийн мэдэж байсан ч буцаад тэндээ<br> үлдчихмээр л байсан шүү.<br>
+      Чи миний<br>
+      Өглөөний наран<br>
+      Үдшийн саран <br>
+      </p>
+      <img src="cat.gif" alt="хайр" style="width:200px;">
+    </div>
+  </div>
+
+<script>
+const audio = document.getElementById('background-music');
+const musicButton = document.getElementById('music-button');
+const songSelect = document.getElementById('song-select');
+
+audio.muted = true;
+
+musicButton.addEventListener('click', () => {
+  audio.muted = false;
+  if (audio.paused) {
+    audio.play()
+      .then(() => musicButton.innerHTML = '▐▐ ')
+      .catch(error => console.error('Дуу эхлүүлэхэд алдаа:', error));
+  } else {
+    audio.pause();
+    musicButton.innerHTML = '▶︎';
+  }
+});
+
+songSelect.addEventListener('change', () => {
+  const selectedSong = songSelect.value;
+  audio.src = selectedSong;
+  audio.play()
+    .then(() => musicButton.innerHTML = '🎵 Дуу зогсоох')
+    .catch(error => console.error('Дуу эхлүүлэхэд алдаа:', error));
+});
+
+function createFlower() {
+  const flowers = ['🌸', '🌺', '🌷', '💮', '🏵️'];
+  const flower = document.createElement('div');
+  flower.className = 'flower';
+  flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
+  flower.style.left = Math.random() * 100 + 'vw';
+  flower.style.animationDuration = Math.random() * 3 + 5 + 's';
+  document.getElementById('flower-container').appendChild(flower);
+  
+  setTimeout(() => flower.remove(), 8000);
+}
+setInterval(createFlower, 500);
+
+function showMagic() {
+  document.getElementById('secret-msg').style.display = 'block';
+  document.body.style.overflow = 'hidden';
+  createHearts();
+}
+
+window.onclick = function(event) {
+  if (event.target.className === 'modal') {
+    event.target.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+}
+
+function createHeart() {
+  const heart = document.createElement('div');
+  heart.classList.add('heart');
+  heart.innerHTML = '❤️';
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+  document.getElementById('flower-container').appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 5000);
+}
+
+function createHearts() {
+  setInterval(createHeart, 300);
+}
+
+const loveTextContainer = document.getElementById('love-text-container');
+const phrases = [
+  "Би чамд хайртай", 
+  "I love you", 
+  "Je t'aime", 
+  "Te amo", 
+  "Ich liebe dich", 
+  "Ti amo", 
+  "Eu te amo", 
+  "Я тебя люблю",
+  "我爱你",
+  "愛してる", 
+  "사랑해",
+  "أحبك", 
+  "मैं तुमसे प्यार करता हूँ",
+  "Ik hou van jou",
+  "Jag älskar dig", 
+  "Szeretlek", 
+  "ฉันรักคุณ",
+  "Mahal kita",
+  "Seni seviyorum",
+  "Σ'αγαπώ", 
+  "Miluji tě", 
+];
+
+const fonts = ["Arial", "Georgia", "Courier New", "Verdana", "Times New Roman", "Comic Sans MS", "Impact", "Lucida Console"];
+
+function createLoveText() {
+  const loveText = document.createElement('div');
+  loveText.classList.add('love-text');
+  loveText.textContent = phrases[Math.floor(Math.random() * phrases.length)];
+  loveText.style.fontSize = Math.floor(Math.random() * 30 + 15) + 'px'; 
+  loveText.style.fontFamily = fonts[Math.floor(Math.random() * fonts.length)]; 
+  loveText.style.top = Math.random() * 100 + 'vh';
+  loveText.style.left = Math.random() * 100 + 'vw';
+  loveText.style.transform = `rotate(${Math.random() * 360}deg)`; 
+  loveTextContainer.appendChild(loveText);
+
+  setTimeout(() => {
+    loveText.remove();
+  }, 10000);     
+}
+
+setInterval(createLoveText, 1000); 
+</script>
+
+</body>
+</html>
